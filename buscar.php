@@ -1,5 +1,10 @@
 <?php
 
+//dado un string el campo "nombre",
+//y dado un archivo de texto users.txt
+//este script devuelve true si el string se encuentra en users.txt
+//o false en caso contrario
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
