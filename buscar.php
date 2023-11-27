@@ -1,23 +1,20 @@
 <?php
 
-//dado un string el campo "nombre",
-//y dado un archivo de texto users.txt
-//este script devuelve true si el string se encuentra en users.txt
-//o false en caso contrario
-
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+// PRE: el scritp debe recibir al menos un argumento de tipo string
+
+$nombre = $argv[1];
 $fp = fopen("users.txt", "r");
-$nombre = $_POST["nombre"];
-$max = strlen($nombre);
+$largoNombre = strlen($nombre);
 $pos = 0;
 $esta = false;
 
-function avanzar ($archivo) {
-    $chr = fgetc($archivo);
-    while ($chr != "\n") {
-        $chr = fgetc($archivo);
+//Mueve el puntero de archivo a la siguiente linea
+function sigLinea ($fp) {
+    while ($c !== "\n") {
+        $c = fgetc($fp);
     }
 }
 
@@ -25,7 +22,7 @@ $c = fgetc($fp);
 $seguir = true;
 while ($seguir) {
     if ($c !== false) {
-        if ($pos != $max) {
+        if ($pos != $largoNombre) {
             if ($c == $nombre[$pos]) {
                 $pos++;
                 $c = fgetc($fp);
